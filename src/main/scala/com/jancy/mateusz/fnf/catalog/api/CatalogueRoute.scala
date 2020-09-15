@@ -6,9 +6,7 @@ import com.jancy.mateusz.fnf.catalog.Protocol
 import com.jancy.mateusz.fnf.catalog.service.CatalogueService
 import com.jancy.mateusz.fnf.catalog.service.CatalogueService.NewCatalogue
 
-import scala.concurrent.ExecutionContext
-
-class CatalogueRoute(catalogueService: CatalogueService)(implicit ec: ExecutionContext) extends Protocol {
+class CatalogueRoute(catalogueService: CatalogueService) extends Protocol {
   def myUserPassAuthenticator(credentials: Credentials): Option[String] = credentials match {
     case p @ Credentials.Provided(id) if p.verify("p4ssw0rd") => Some(id)
     case _                                                    => None
