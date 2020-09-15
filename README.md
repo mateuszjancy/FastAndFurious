@@ -60,6 +60,11 @@ Use authenticateBasic for any user name and `p4ssw0rd` pass ;)
 }
 ```
 
+### PR rules
+* Code formatted by `.scalafmt.conf`
+* Reasonable tests needs to be provided
+* All tests are passing
+
 ### TODO
 * Error logging in OMDb client
 * Separate API model from DB model
