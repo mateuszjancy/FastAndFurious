@@ -3,6 +3,7 @@ package com.jancy.mateusz.fnf.catalog
 import akka.http.scaladsl.server.Directives
 import com.jancy.mateusz.fnf.catalog.client.{OMDbMovieDetails, OMDbRating}
 import com.jancy.mateusz.fnf.catalog.library.{Catalogue, CatalogueStatus, Movie, Rating}
+import com.jancy.mateusz.fnf.catalog.service.CatalogueService.NewCatalogue
 import com.jancy.mateusz.fnf.catalog.service.MoveDetailsService.{MovieDetails, MovieDetailsRating}
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
 import io.circe.Decoder.decodeEnumeration
@@ -16,6 +17,9 @@ trait Protocol extends Directives with FailFastCirceSupport {
 
   implicit lazy val catalogueEncoder = deriveEncoder[Catalogue]
   implicit lazy val catalogueDecoder = deriveDecoder[Catalogue]
+
+  implicit lazy val newCatalogueEncoder = deriveEncoder[NewCatalogue]
+  implicit lazy val newCatalogueDecoder = deriveDecoder[NewCatalogue]
 
   implicit lazy val movieEncoder = deriveEncoder[Movie]
   implicit lazy val movieDecoder = deriveDecoder[Movie]
