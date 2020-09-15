@@ -5,6 +5,7 @@ import com.jancy.mateusz.fnf.catalog.client.{OMDbMovieDetails, OMDbRating}
 import com.jancy.mateusz.fnf.catalog.library.{Catalogue, CatalogueStatus, Movie, Rating}
 import com.jancy.mateusz.fnf.catalog.service.CatalogueService.NewCatalogue
 import com.jancy.mateusz.fnf.catalog.service.MoveDetailsService.{MovieDetails, MovieDetailsRating}
+import com.jancy.mateusz.fnf.catalog.service.RatingService.NewRating
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
 import io.circe.Decoder.decodeEnumeration
 import io.circe.Encoder.encodeEnumeration
@@ -26,6 +27,9 @@ trait Protocol extends Directives with FailFastCirceSupport {
 
   implicit lazy val reviewEncoder = deriveEncoder[Rating]
   implicit lazy val reviewDecoder = deriveDecoder[Rating]
+
+  implicit lazy val newRviewEncoder = deriveEncoder[NewRating]
+  implicit lazy val newReviewDecoder = deriveDecoder[NewRating]
 
   implicit lazy val omdbratingEncoder = deriveEncoder[OMDbRating]
   implicit lazy val omdbRatingDecoder = deriveDecoder[OMDbRating]
