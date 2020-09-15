@@ -22,7 +22,7 @@ class CatalogueService(catalogueLibrary: CatalogueLibrary, movieLibrary: MovieLi
 
   def create(newCatalogue: NewCatalogue): Future[Option[Int]] = {
     val catalogue = Catalogue(
-      id = catalogueLibrary.NewId,
+      id = 0,
       time = newCatalogue.time,
       movieId = newCatalogue.movieId,
       price = newCatalogue.price,

@@ -16,8 +16,17 @@ object RatingService {
 class RatingService(reviewLibrary: ReviewLibrary, movieLibrary: MovieLibrary)(implicit ex: ExecutionContext) {
   def createRating(rating: NewRating): Future[Option[Int]] = {
     movieLibrary.get(rating.movieId).flatMap {
-      case Some(_) => reviewLibrary.insert(Rating(0, rating.userId, rating.movieId, rating.rating)).map(Some(_))
-      case None    => Future.successful(None)
+      case Some(_) =>
+        reviewLibrary
+          .insert(
+            Rating(
+              id = 0,
+              userId = rating.userId,
+              movieId = rating.movieId,
+              rating = rating.rating
+            ))
+          .map(Some(_))
+      case None => Future.successful(None)
     }
   }
 
