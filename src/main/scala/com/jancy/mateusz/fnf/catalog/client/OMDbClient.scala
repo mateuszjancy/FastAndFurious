@@ -1,7 +1,7 @@
 package com.jancy.mateusz.fnf.catalog.client
 
 import akka.actor.ActorSystem
-import akka.http.javadsl.model.StatusCodes
+import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.HttpRequest
 import akka.http.scaladsl.unmarshalling.Unmarshal

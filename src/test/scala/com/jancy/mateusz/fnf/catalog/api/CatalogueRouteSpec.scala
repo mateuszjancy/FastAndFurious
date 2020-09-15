@@ -56,9 +56,7 @@ class CatalogueRouteSpec extends AnyFlatSpecLike with MockFactory with Matchers 
     val tested           = new CatalogueRoute(catalogueService)
     val validCredentials = BasicHttpCredentials("John", "p4ssw0rd")
 
-    println(catalogue.asJson.toString())
-
-    Put("/catalogue").withEntity(HttpEntity(MediaTypes.`application/json`, newCatalogue.asJson.noSpaces)) ~> addCredentials(validCredentials) ~>
+    Put("/admin/catalogue").withEntity(HttpEntity(MediaTypes.`application/json`, newCatalogue.asJson.noSpaces)) ~> addCredentials(validCredentials) ~>
       tested.route ~> check {
       response.status shouldBe StatusCodes.OK
     }
@@ -76,7 +74,7 @@ class CatalogueRouteSpec extends AnyFlatSpecLike with MockFactory with Matchers 
     val tested           = new CatalogueRoute(catalogueService)
     val validCredentials = BasicHttpCredentials("John", "p4ssw0rd")
 
-    Put("/catalogue").withEntity(HttpEntity(MediaTypes.`application/json`, newCatalogue.asJson.noSpaces)) ~> addCredentials(validCredentials) ~>
+    Put("/admin/catalogue").withEntity(HttpEntity(MediaTypes.`application/json`, newCatalogue.asJson.noSpaces)) ~> addCredentials(validCredentials) ~>
       tested.route ~> check {
       response.status shouldBe StatusCodes.BadRequest
     }
